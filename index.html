@@ -84,38 +84,46 @@
         .hero-title span { color: var(--primary); background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-text { font-size: 1.5rem; color: var(--text-muted); max-width: 750px; margin: 0 auto 2.5rem auto; font-weight: 500; }
 
-        /* LOGOS */
+        /* LOGOS - CORREGIDO (Siempre a color) */
         .insurer-logos-container {
             margin-top: 1rem;
             display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px; padding: 20px;
             background: rgba(255, 255, 255, 0.6); border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.5);
         }
-        .insurer-logo { height: 55px; width: auto; object-fit: contain; filter: grayscale(100%) opacity(0.6); transition: all 0.4s ease; cursor: pointer; }
-        .insurer-logo:hover { filter: grayscale(0%) opacity(1); transform: scale(1.08); }
         
-        /* NOSOTROS - CORREGIDO */
+        .insurer-logo { 
+            height: 55px; 
+            width: auto; 
+            object-fit: contain; 
+            /* Se eliminó el filtro de escala de grises */
+            transition: all 0.4s ease; 
+            cursor: pointer; 
+        }
+        
+        .insurer-logo:hover { 
+            transform: scale(1.08); /* Mantiene solo el efecto de zoom */
+        }
+        
+        /* NOSOTROS */
         .about-card {
             background: rgba(255, 255, 255, 0.9); padding: 4rem; border-radius: 30px; box-shadow: var(--shadow-soft);
             text-align: center; border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(20px);
         }
 
-        /* Estilo para el texto limpio SIN subrayado */
         .about-text { 
             font-size: 1.35rem; line-height: 1.9; color: var(--text-dark); margin-bottom: 3.5rem; 
         }
         
-        /* Clase especial para destacar texto SIN subrayar */
         .texto-destacado {
             color: var(--primary);
             font-weight: 800;
             text-decoration: none !important;
             border-bottom: none !important;
-            display: inline-block; /* Ayuda a evitar comportamientos raros de línea */
+            display: inline-block;
         }
         
         .values-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         
-        /* BOTONES DE VALORES SIMPLIFICADOS (Arregla el error visual de la captura) */
         .value-item {
             background: white; 
             padding: 15px 35px; 
@@ -123,7 +131,7 @@
             color: var(--primary); 
             font-weight: 700; 
             font-size: 1.1rem; 
-            border: 2px solid var(--primary); /* Borde azul limpio */
+            border: 2px solid var(--primary);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             display: flex; align-items: center; gap: 10px;
             transition: 0.3s;
