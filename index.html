@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SM SEGUROS | Expertos en Seguros</title>
 
-    <link rel="apple-touch-icon" href="Logo.jpg">
-    <link rel="icon" type="image/jpeg" href="Logo.jpg">
+    <link rel="apple-touch-icon" href="nuevo-logo-sm.jpg">
+    <link rel="icon" type="image/jpeg" href="nuevo-logo-sm.jpg">
     <meta name="apple-mobile-web-app-title" content="SM SEGUROS">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -53,7 +53,14 @@
         }
 
         .brand-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img-full { height: 70px; width: auto; display: block; }
+        
+        /* AJUSTE DE TAMAÑO PARA EL NUEVO LOGO */
+        .logo-img-full { 
+            height: 80px; /* Aumentado ligeramente para que se vea mejor el círculo */
+            width: auto; 
+            display: block; 
+            border-radius: 50%; /* Opcional: asegura que se mantenga circular si el fondo varía */
+        }
 
         .nav-menu { list-style: none; display: flex; gap: 30px; align-items: center; }
         .nav-menu a {
@@ -84,7 +91,7 @@
         .hero-title span { color: var(--primary); background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-text { font-size: 1.5rem; color: var(--text-muted); max-width: 750px; margin: 0 auto 2.5rem auto; font-weight: 500; }
 
-        /* LOGOS - CORREGIDO (Siempre a color) */
+        /* LOGOS */
         .insurer-logos-container {
             margin-top: 1rem;
             display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px; padding: 20px;
@@ -95,13 +102,12 @@
             height: 55px; 
             width: auto; 
             object-fit: contain; 
-            /* Se eliminó el filtro de escala de grises */
             transition: all 0.4s ease; 
             cursor: pointer; 
         }
         
         .insurer-logo:hover { 
-            transform: scale(1.08); /* Mantiene solo el efecto de zoom */
+            transform: scale(1.08); 
         }
         
         /* NOSOTROS */
@@ -210,7 +216,7 @@
 
     <header>
         <a href="#" class="brand-container">
-            <img src="new-sm-logo.png" alt="SM Seguros" class="logo-img-full" onerror="this.src='Logo.jpg'">
+            <img src="nuevo-logo-sm.jpg" alt="SM Seguros" class="logo-img-full">
         </a>
         <nav>
             <ul class="nav-menu">
