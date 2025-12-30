@@ -53,14 +53,8 @@
         }
 
         .brand-container { display: flex; align-items: center; text-decoration: none; }
-        
-        /* AJUSTE DE TAMAÑO PARA EL NUEVO LOGO */
-        .logo-img-full { 
-            height: 80px; /* Aumentado ligeramente para que se vea mejor el círculo */
-            width: auto; 
-            display: block; 
-            border-radius: 50%; /* Opcional: asegura que se mantenga circular si el fondo varía */
-        }
+        /* TAMAÑO DE LOGO SM CORREGIDO */
+        .logo-img-full { height: 80px; width: auto; display: block; }
 
         .nav-menu { list-style: none; display: flex; gap: 30px; align-items: center; }
         .nav-menu a {
@@ -91,23 +85,24 @@
         .hero-title span { color: var(--primary); background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-text { font-size: 1.5rem; color: var(--text-muted); max-width: 750px; margin: 0 auto 2.5rem auto; font-weight: 500; }
 
-        /* LOGOS */
+        /* LOGOS ASEGURADORAS - CORREGIDOS */
         .insurer-logos-container {
             margin-top: 1rem;
             display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px; padding: 20px;
-            background: rgba(255, 255, 255, 0.6); border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.5);
+            background: transparent;
         }
         
         .insurer-logo { 
-            height: 55px; 
+            height: 65px; /* Tamaño aumentado */
             width: auto; 
             object-fit: contain; 
             transition: all 0.4s ease; 
             cursor: pointer; 
+            mix-blend-mode: multiply; /* Camuflaje con el fondo */
         }
         
         .insurer-logo:hover { 
-            transform: scale(1.08); 
+            transform: scale(1.1);
         }
         
         /* NOSOTROS */
@@ -115,38 +110,15 @@
             background: rgba(255, 255, 255, 0.9); padding: 4rem; border-radius: 30px; box-shadow: var(--shadow-soft);
             text-align: center; border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(20px);
         }
-
-        .about-text { 
-            font-size: 1.35rem; line-height: 1.9; color: var(--text-dark); margin-bottom: 3.5rem; 
-        }
-        
-        .texto-destacado {
-            color: var(--primary);
-            font-weight: 800;
-            text-decoration: none !important;
-            border-bottom: none !important;
-            display: inline-block;
-        }
-        
+        .about-text { font-size: 1.35rem; line-height: 1.9; color: var(--text-dark); margin-bottom: 3.5rem; }
+        .texto-destacado { color: var(--primary); font-weight: 800; text-decoration: none; border-bottom: none; display: inline-block; }
         .values-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        
         .value-item {
-            background: white; 
-            padding: 15px 35px; 
-            border-radius: 50px;
-            color: var(--primary); 
-            font-weight: 700; 
-            font-size: 1.1rem; 
-            border: 2px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            display: flex; align-items: center; gap: 10px;
-            transition: 0.3s;
+            background: white; padding: 15px 35px; border-radius: 50px;
+            color: var(--primary); font-weight: 700; font-size: 1.1rem; border: 2px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 10px; transition: 0.3s;
         }
-        .value-item:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
+        .value-item:hover { background: var(--primary); color: white; transform: translateY(-3px); }
 
         /* COTIZADOR */
         .cotizador-wrapper { background: white; border-radius: 30px; box-shadow: var(--shadow-soft); overflow: hidden; border: 1px solid rgba(0,0,0,0.05); }
@@ -167,18 +139,13 @@
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         .full-width { grid-column: span 2; }
         label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 1rem; color: var(--text-dark); }
-        input, select {
-            width: 100%; padding: 16px 20px; border: 2px solid #e1e8ed; border-radius: 15px;
-            background: #f8faff; font-size: 1rem; transition: 0.3s;
-        }
+        input, select { width: 100%; padding: 16px 20px; border: 2px solid #e1e8ed; border-radius: 15px; background: #f8faff; font-size: 1rem; transition: 0.3s; }
         input:focus, select:focus { border-color: var(--secondary); background: white; box-shadow: 0 0 0 4px rgba(0, 174, 199, 0.1); outline: none; }
         .cta-btn {
             width: 100%; margin-top: 2.5rem; padding: 1.4rem; 
             background: linear-gradient(135deg, var(--primary), var(--secondary)); 
-            color: white; border: none; border-radius: 18px; 
-            font-size: 1.3rem; font-weight: 800; cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0, 51, 160, 0.2);
-            transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 15px;
+            color: white; border: none; border-radius: 18px; font-size: 1.3rem; font-weight: 800; cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 51, 160, 0.2); transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 15px;
         }
         .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0, 51, 160, 0.3); }
 
@@ -188,24 +155,15 @@
         .footer-info strong { color: var(--primary); }
 
         /* WHATSAPP */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; 
-            background: linear-gradient(135deg, #25d366, #128c7e); color: white; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; font-size: 36px; 
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); z-index: 2000; transition: all 0.3s ease; text-decoration: none;
-        }
-        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); box-shadow: 0 12px 25px rgba(37, 211, 102, 0.5); }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: linear-gradient(135deg, #25d366, #128c7e); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); z-index: 2000; transition: all 0.3s ease; text-decoration: none; }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
 
-        /* Responsive */
         @media (max-width: 900px) {
             .hero-title { font-size: 3rem; }
             .form-grid { grid-template-columns: 1fr; }
             .full-width { grid-column: span 1; }
             .nav-menu { display: none; } 
             header { justify-content: center; }
-            .about-card { padding: 2.5rem; }
-            .insurer-logos-container { gap: 25px; }
-            .insurer-logo { height: 40px; }
         }
     </style>
 </head>
@@ -233,10 +191,10 @@
         <p class="hero-text">Expertos en seguros. Asesoría personalizada con pasión y transparencia.</p>
         
         <div class="insurer-logos-container">
-            <img src="logo-sura.png" alt="Sura" class="insurer-logo" title="Seguros SURA">
-            <img src="logo-allianz.png" alt="Allianz" class="insurer-logo" title="Allianz Seguros">
-            <img src="logo-axa.png" alt="AXA Colpatria" class="insurer-logo" title="AXA Colpatria">
-            <img src="logo-bolivar.png" alt="Seguros Bolívar" class="insurer-logo" title="Seguros Bolívar" onerror="this.style.display='none'">
+            <img src="logo-sura.webp" alt="Sura" class="insurer-logo" title="Seguros SURA">
+            <img src="AZ_Logo_Twitter_438x220px.webp" alt="Allianz" class="insurer-logo" title="Allianz Seguros">
+            <img src="images (1).png" alt="AXA Colpatria" class="insurer-logo" title="AXA Colpatria">
+            <img src="images.png" alt="Seguros Bolívar" class="insurer-logo" title="Seguros Bolívar">
         </div>
     </section>
 
@@ -361,9 +319,9 @@
 
     <footer id="contacto">
         <h2 style="color:var(--primary); margin-bottom:25px; font-weight: 800;">Contáctanos</h2>
-        <p class="footer-info"><i class="fas fa-envelope" style="color: var(--secondary); margin-right: 8px;"></i> <strong>Email:</strong> santiago.marenco@asesorsura.com</p>
-        <p class="footer-info"><i class="fas fa-phone-alt" style="color: var(--secondary); margin-right: 8px;"></i> <strong>Móvil 1:</strong> +57 301 4633995</p>
-        <p class="footer-info"><i class="fas fa-phone-alt" style="color: var(--secondary); margin-right: 8px;"></i> <strong>Móvil 2:</strong> +57 318 3471986</p>
+        <p class="footer-info"><strong>Email:</strong> santiago.marenco@asesorsura.com</p>
+        <p class="footer-info"><strong>Móvil 1:</strong> +57 301 4633995</p>
+        <p class="footer-info"><strong>Móvil 2:</strong> +57 318 3471986</p>
         <br>
         <p style="font-size: 0.95rem; opacity: 0.7;">&copy; 2025 SM SEGUROS. Todos los derechos reservados.</p>
     </footer>
@@ -388,26 +346,20 @@
         function enviarWhatsapp(tipo) {
             const tel = "573014633995";
             let msg = "";
-            
             if(tipo === 'auto') {
                 let n = document.getElementById('auto-nombre').value;
                 let p = document.getElementById('auto-placa').value;
-                let r = document.getElementById('auto-referencia').value;
-                msg = `Hola SM SEGUROS, deseo cotizar AUTO para: ${n}. Placa: ${p}. Referencia: ${r}`;
+                msg = `Hola SM SEGUROS, deseo cotizar AUTO para: ${n}. Placa: ${p}`;
             } else if (tipo === 'salud') {
                 let n = document.getElementById('salud-nombre').value;
-                let t = document.getElementById('salud-tipo').value;
-                msg = `Hola SM SEGUROS, deseo cotizar SALUD (${t}) para: ${n}`;
+                msg = `Hola SM SEGUROS, deseo cotizar SALUD para: ${n}`;
             } else if (tipo === 'vida') {
                 let n = document.getElementById('vida-nombre').value;
-                let v = document.getElementById('vida-valor').value;
-                msg = `Hola SM SEGUROS, deseo cotizar VIDA para: ${n}. Valor aprox: ${v}`;
+                msg = `Hola SM SEGUROS, deseo cotizar VIDA para: ${n}`;
             } else if (tipo === 'hogar') {
                 let n = document.getElementById('hogar-nombre').value;
-                let c = document.getElementById('hogar-ciudad').value;
-                msg = `Hola SM SEGUROS, deseo cotizar HOGAR en ${c}. Propietario: ${n}`;
+                msg = `Hola SM SEGUROS, deseo cotizar HOGAR para: ${n}`;
             }
-            
             window.open(`https://wa.me/${tel}?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
