@@ -3,434 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QAXI | Desarrollo Web por Suscripción</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>SM SEGUROS | Expertos en Seguros</title>
+
+    <link rel="apple-touch-icon" href="nuevo-logo-sm.jpg">
+    <link rel="icon" type="image/jpeg" href="nuevo-logo-sm.jpg">
+    <meta name="apple-mobile-web-app-title" content="SM SEGUROS">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050505;
-            --surface-color: #121212;
-            --text-primary: #ffffff;
-            --text-secondary: #a1a1a1;
-            --accent: #ffffff;
-            --border-color: #333;
+            --primary: #0033A0;
+            --secondary: #00AEC7;
+            --text-dark: #1a252f;
+            --text-muted: #546e7a;
+            --radius: 24px;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.6;
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; }
+        
+        body { 
+            background-color: #f4f7fd; 
+            color: var(--text-dark); 
+            line-height: 1.6; 
+            font-size: 18px; 
             overflow-x: hidden;
         }
 
-        /* --- ANIMACIÓN SCROLL REVEAL (La magia del movimiento) --- */
-        .hidden {
-            opacity: 0;
-            filter: blur(5px);
-            transform: translateY(50px); /* Empieza más abajo */
-            transition: all 1s ease-out; /* Tarda 1 segundo en aparecer suavemente */
-        }
+        /* FONDO */
+        .bg-shape { position: fixed; border-radius: 50%; filter: blur(120px); z-index: -1; opacity: 0.4; }
+        .shape1 { top: -20%; left: -20%; width: 600px; height: 600px; background: var(--secondary); animation: float 18s infinite alternate ease-in-out; }
+        .shape2 { bottom: -20%; right: -10%; width: 500px; height: 500px; background: var(--primary); animation: float 22s infinite alternate-reverse ease-in-out; }
+        @keyframes float { from { transform: translate(0,0) rotate(0deg); } to { transform: translate(50px, 50px) rotate(10deg); } }
 
-        .show {
-            opacity: 1;
-            filter: blur(0);
-            transform: translateY(0);
-        }
-
-        /* --- Animación de Brillo Texto (Grok Style) --- */
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        /* --- Header & Nav --- */
+        /* HEADER */
         header {
-            position: fixed; top: 0; width: 100%; padding: 15px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px);
-            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
 
-        .logo img { height: 55px; object-fit: contain; }
-
-        nav ul { display: flex; list-style: none; gap: 30px; }
-        nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
-        nav a:hover { color: var(--accent); text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); }
-
-        .cta-btn {
-            background: var(--accent); color: var(--bg-color); padding: 10px 20px;
-            border-radius: 4px; font-weight: 600; text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s; display: inline-block;
-        }
-        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); }
-
-        /* --- Hero Section --- */
-        .hero {
-            height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-            padding: 0 20px;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 70%);
-        }
-
-        .hero h1 {
-            font-size: 4rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px;
-            /* Efecto Grok Brillante */
-            background: linear-gradient(to right, #ffffff 20%, #888888 40%, #ffffff 60%, #888888 80%);
-            background-size: 200% auto;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: shine 4s linear infinite;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-        }
-
-        .hero p {
-            font-size: 1.2rem; color: #cccccc; max-width: 600px; margin-bottom: 40px;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-        }
-
-        .q-watermark {
-            font-size: 20rem; position: absolute; opacity: 0.03; font-weight: 800;
-            z-index: -1; pointer-events: none;
-        }
-
-        /* --- Sections General --- */
-        section { padding: 80px 10%; }
-        .section-title {
-            font-size: 2rem; margin-bottom: 40px; border-left: 4px solid var(--accent); padding-left: 20px;
-            background: linear-gradient(to right, #fff, #aaa); -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-        }
-
-        /* --- About --- */
-        .about-grid { display: grid; grid-template-columns: 1fr; gap: 50px; align-items: center; max-width: 800px; margin: 0 auto; }
-        .about-text h3 { margin-bottom: 20px; font-size: 1.5rem; color: #fff; }
-        .about-list li { margin-bottom: 15px; display: flex; align-items: center; color: var(--text-secondary); }
-        .about-list li i { margin-right: 15px; color: var(--accent); text-shadow: 0 0 5px #fff; }
-
-        /* --- Process (Cómo Funciona) --- */
-        .process-step {
-            flex: 1; min-width: 250px;
-            background: rgba(255,255,255,0.02); padding: 30px; border-radius: 10px;
-            border: 1px solid #222; transition: transform 0.3s;
-        }
-        .process-step:hover { transform: translateY(-5px); border-color: #444; }
-        .step-num { font-size: 3rem; font-weight: 800; color: #222; margin-bottom: 10px; line-height: 1; }
-
-        /* --- Founder --- */
-        .founder-section { background: var(--surface-color); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
-        .founder-content { max-width: 800px; margin: 0 auto; }
-        .founder-sign { margin-top: 30px; font-style: italic; border-top: 1px solid #333; padding-top: 20px; display: inline-block; }
-
-        /* --- FAQ (Preguntas Frecuentes) --- */
-        details {
-            background: rgba(255,255,255,0.02); margin-bottom: 15px; border-radius: 8px; border: 1px solid #222;
-            transition: all 0.3s; overflow: hidden;
-        }
-        details[open] { background: rgba(255,255,255,0.05); border-color: #444; }
-        summary {
-            padding: 20px; cursor: pointer; color: #fff; font-weight: 600; list-style: none;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        summary::after { content: '+'; font-size: 1.2rem; color: #666; transition: transform 0.3s; }
-        details[open] summary::after { transform: rotate(45deg); color: #fff; }
-        .faq-answer { padding: 0 20px 20px 20px; color: #aaa; font-size: 0.9rem; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 10px; padding-top: 15px; }
-
-        /* --- Pricing --- */
-        .pricing-container { display: flex; justify-content: center; }
-        .pricing-card {
-            background: rgba(255,255,255,0.03); border: 1px solid var(--border-color);
-            padding: 40px; border-radius: 12px; width: 100%; max-width: 400px;
-            text-align: center; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-        }
-        .pricing-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 0 30px rgba(255, 255, 255, 0.05); }
-        .price { font-size: 3rem; font-weight: 800; margin: 20px 0; text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); }
-        .price span { font-size: 1rem; color: var(--text-secondary); font-weight: 400; text-shadow: none; }
-        .features-list { list-style: none; text-align: left; margin: 30px 0; }
-        .features-list li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .features-list li i { color: var(--accent); margin-right: 10px; text-shadow: 0 0 5px #fff; }
-
-        /* --- Legal Dropdown --- */
-        .legal-summary { cursor: pointer; padding: 20px; background: var(--surface-color); border: 1px solid var(--border-color); margin-top: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .legal-content { display: none; padding: 40px; background: #000; font-size: 0.9rem; color: #888; border: 1px solid var(--border-color); border-top: none; }
-        .legal-content h4 { color: #fff; margin-top: 30px; margin-bottom: 10px; font-size: 1.1rem; }
-        .legal-content ul { margin-left: 20px; margin-bottom: 15px; list-style: disc; color: #888; }
-
-        /* Footer */
-        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.8rem; }
+        .brand-container { display: flex; align-items: center; text-decoration: none; }
         
-        /* Floating Email */
-        .email-float-btn {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-            background: var(--accent); border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            cursor: pointer; box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); transition: transform 0.3s; z-index: 2000; text-decoration: none;
-        }
-        .email-float-btn:hover { transform: scale(1.1); box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); }
-        .email-float-btn i { font-size: 24px; color: #000; }
+        /* LOGO SM SEGUROS */
+        .logo-img-full { height: 80px; width: auto; display: block; }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            nav { display: none; } 
+        .nav-menu { list-style: none; display: flex; gap: 30px; align-items: center; }
+        .nav-menu a {
+            text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 1.1rem; transition: 0.3s; position: relative;
+        }
+        .nav-menu a::after { content: ''; position: absolute; width: 0; height: 3px; bottom: -5px; left: 0; background: var(--secondary); transition: 0.3s; border-radius: 2px; }
+        .nav-menu a:hover { color: var(--primary); }
+        .nav-menu a:hover::after { width: 100%; }
+        
+        .btn-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white !important; padding: 10px 25px; border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 174, 199, 0.3); transition: 0.3s;
+        }
+        .btn-header:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 174, 199, 0.4); }
+
+        /* SECCIONES */
+        section { padding: 5rem 20px; max-width: 1150px; margin: 0 auto; }
+        .section-title { 
+            text-align: center; font-size: 2.8rem; color: var(--primary); margin-bottom: 1rem; font-weight: 800; letter-spacing: -1px;
+        }
+        .section-desc {
+            text-align: center; font-size: 1.25rem; margin-bottom: 3.5rem; color: var(--text-muted); max-width: 700px; margin-left: auto; margin-right: auto;
+        }
+
+        /* HERO */
+        #inicio { text-align: center; padding-top: 8rem; min-height: 75vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .hero-title { font-size: 4rem; line-height: 1.1; margin-bottom: 1.5rem; color: var(--text-dark); }
+        .hero-title span { color: var(--primary); background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-text { font-size: 1.5rem; color: var(--text-muted); max-width: 750px; margin: 0 auto 2.5rem auto; font-weight: 500; }
+
+        /* LOGOS ASEGURADORAS */
+        .insurer-logos-container {
+            margin-top: 1rem;
+            display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px; padding: 20px;
+            background: transparent;
+        }
+        .insurer-logo { 
+            height: 65px; width: auto; object-fit: contain; transition: all 0.4s ease; cursor: pointer; 
+            mix-blend-mode: multiply; /* Efecto transparencia */
+        }
+        .insurer-logo:hover { transform: scale(1.1); }
+        
+        /* NOSOTROS */
+        .about-card {
+            background: rgba(255, 255, 255, 0.9); padding: 4rem; border-radius: 30px; box-shadow: var(--shadow-soft);
+            text-align: center; border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(20px);
+        }
+        .about-text { font-size: 1.35rem; line-height: 1.9; color: var(--text-dark); margin-bottom: 3.5rem; }
+        .texto-destacado { color: var(--primary); font-weight: 800; display: inline-block; }
+        .values-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .value-item {
+            background: white; padding: 15px 35px; border-radius: 50px;
+            color: var(--primary); font-weight: 700; font-size: 1.1rem; border: 2px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 10px; transition: 0.3s;
+        }
+        .value-item:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+
+        /* COTIZADOR CON RAYITA DE DESPLAZAMIENTO */
+        .cotizador-wrapper { background: white; border-radius: 30px; box-shadow: var(--shadow-soft); overflow: hidden; border: 1px solid rgba(0,0,0,0.05); }
+        
+        .tabs { 
+            display: flex; 
+            background: #f8faff; 
+            padding: 15px; 
+            gap: 15px; 
+            overflow-x: auto; /* Permite deslizar */
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px; /* Espacio extra para la rayita */
+        }
+
+        /* DISEÑO DE LA RAYITA (BARRA DE DESPLAZAMIENTO) */
+        .tabs::-webkit-scrollbar {
+            height: 5px; /* Altura de la rayita */
+        }
+        .tabs::-webkit-scrollbar-track {
+            background: #e0e0e0; 
+            border-radius: 10px;
+        }
+        .tabs::-webkit-scrollbar-thumb {
+            background: var(--secondary); /* Color azul de la rayita */
+            border-radius: 10px;
+        }
+
+        .tab-btn {
+            flex: 1; padding: 1.2rem; border: none; background: white; cursor: pointer;
+            font-weight: 700; font-size: 1.1rem; color: var(--text-muted); transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 12px; 
+            min-width: 150px; border-radius: 15px; border: 1px solid transparent;
+            white-space: nowrap; /* Evita que el texto se parta */
+        }
+        .tab-btn:hover { background: #f0f4f8; color: var(--primary); }
+        .tab-btn.active { background: white; color: var(--primary); border-color: var(--secondary); box-shadow: 0 5px 15px rgba(0, 174, 199, 0.15); }
+        .tab-btn i { font-size: 1.3rem; }
+
+        .form-content { padding: 3.5rem; display: none; }
+        .form-content.active { display: block; animation: fadeUp 0.6s ease; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .form-header h3 { font-size: 2rem; color: var(--primary); margin-bottom: 8px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .full-width { grid-column: span 2; }
+        label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 1rem; color: var(--text-dark); }
+        input, select { width: 100%; padding: 16px 20px; border: 2px solid #e1e8ed; border-radius: 15px; background: #f8faff; font-size: 1rem; transition: 0.3s; }
+        input:focus, select:focus { border-color: var(--secondary); background: white; box-shadow: 0 0 0 4px rgba(0, 174, 199, 0.1); outline: none; }
+        .cta-btn {
+            width: 100%; margin-top: 2.5rem; padding: 1.4rem; 
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            color: white; border: none; border-radius: 18px; font-size: 1.3rem; font-weight: 800; cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 51, 160, 0.2); transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 15px;
+        }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0, 51, 160, 0.3); }
+
+        /* FOOTER */
+        footer { background: white; padding: 4rem 2rem; text-align: center; margin-top: 5rem; border-top: 1px solid #eee; box-shadow: 0 -10px 30px rgba(0,0,0,0.03); }
+        .footer-info { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 12px; }
+        .footer-info strong { color: var(--primary); }
+
+        /* WHATSAPP */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: linear-gradient(135deg, #25d366, #128c7e); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); z-index: 2000; transition: all 0.3s ease; text-decoration: none; }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
+
+        @media (max-width: 900px) {
+            .hero-title { font-size: 3rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .nav-menu { display: none; } 
+            header { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+
     <header>
-        <div class="logo">
-            <img src="image_12.png" alt="QAXI Logo">
-        </div>
+        <a href="#" class="brand-container">
+            <img src="nuevo-logo-sm.jpg" alt="SM Seguros" class="logo-img-full">
+        </a>
         <nav>
-            <ul>
-                <li><a href="#process">Cómo funciona</a></li>
-                <li><a href="#about">Nosotros</a></li>
-                <li><a href="#pricing">Precios</a></li>
-                <li><a href="#legal">Legal</a></li>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#soluciones">Cotizador</a></li>
+                <li><a href="#contacto" class="btn-header">Contacto</a></li>
             </ul>
         </nav>
-        <a href="mailto:santiagomarenco1005@icloud.com" class="cta-btn">Soporte</a>
     </header>
 
-    <section class="hero">
-        <div class="q-watermark">Q.</div>
-        <h1>Desarrollo y mantenimiento<br>web por suscripción.</h1>
-        <p>Diseño minimalista. Automatización con IA.<br>Precio accesible. Modelo escalable.</p>
-        <a href="#pricing" class="cta-btn">Ver Planes</a>
-    </section>
-
-    <section id="about">
-        <h2 class="section-title">Quiénes Somos</h2>
-        <div class="about-grid">
-            <div class="about-text">
-                <h3>QAXI es una empresa de desarrollo y mantenimiento de páginas web por suscripción.</h3>
-                <p style="color: #a1a1a1; margin-bottom: 20px;">
-                    Creada para ofrecer presencia digital accesible, simple y automatizada a emprendedores y pequeños negocios.
-                    QAXI nace en 2025 como una solución práctica para quienes necesitan una web sin complicaciones técnicas ni altos costos.
-                </p>
-                <ul class="about-list">
-                    <li><i class="fas fa-check"></i> Páginas web funcionales y minimalistas</li>
-                    <li><i class="fas fa-shield-alt"></i> Activas, seguras y actualizadas</li>
-                    <li><i class="fas fa-robot"></i> IA para optimizar contenido y procesos</li>
-                    <li><i class="fas fa-sync"></i> Modelo mensual todo incluido</li>
-                </ul>
-            </div>
+    <section id="inicio">
+        <h1 class="hero-title">Tu Tranquilidad <br>es <span>Nuestra Prioridad</span></h1>
+        <p class="hero-text">Expertos en seguros. Asesoría personalizada con pasión y transparencia.</p>
+        
+        <div class="insurer-logos-container">
+            <img src="logo-sura.webp" alt="Sura" class="insurer-logo" title="Seguros SURA">
+            <img src="AZ_Logo_Twitter_438x220px.webp" alt="Allianz" class="insurer-logo" title="Allianz Seguros">
+            <img src="images (1).png" alt="AXA Colpatria" class="insurer-logo" title="AXA Colpatria">
+            <img src="images.png" alt="Seguros Bolívar" class="insurer-logo" title="Seguros Bolívar">
         </div>
     </section>
 
-    <section id="process" style="text-align: center;">
-        <h2 class="section-title" style="display: inline-block; border: none; text-align: center;">¿Cómo funciona?</h2>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 20px;">
-            
-            <div class="process-step">
-                <div class="step-num">01</div>
-                <h4 style="color: #fff; margin-bottom: 10px; font-size: 1.2rem;">Suscríbete</h4>
-                <p style="color: #a1a1a1; font-size: 0.9rem;">Elige el Plan Estándar y activa tu suscripción mensual simple y rápida.</p>
-            </div>
-
-            <div class="process-step">
-                <div class="step-num">02</div>
-                <h4 style="color: #fff; margin-bottom: 10px; font-size: 1.2rem;">Desarrollamos</h4>
-                <p style="color: #a1a1a1; font-size: 0.9rem;">Creamos tu web minimalista, la optimizamos con IA y la configuramos.</p>
-            </div>
-
-            <div class="process-step">
-                <div class="step-num" style="color: #fff; text-shadow: 0 0 10px #fff;">03</div>
-                <h4 style="color: #fff; margin-bottom: 10px; font-size: 1.2rem;">Lanzamiento</h4>
-                <p style="color: #a1a1a1; font-size: 0.9rem;">Tu sitio queda activo, seguro y con nuestro mantenimiento continuo.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="founder" class="founder-section">
-        <div class="founder-content">
-            <h2 class="section-title">Nuestro Enfoque</h2>
-            <p>
-                QAXI es un estudio digital especializado en el desarrollo, mantenimiento y optimización de páginas web modernas, seguras y de alto rendimiento. Diseñamos experiencias digitales minimalistas, limpias y funcionales, donde cada elemento tiene un propósito claro.
+    <section id="nosotros">
+        <div class="about-card">
+            <h2 class="section-title">Quiénes Somos</h2>
+            <p class="about-text">
+                Somos una agencia de seguros con más de <span class="texto-destacado">12 años de experiencia</span> acompañando a nuestros clientes. Nuestra pasión, empeño y transparencia nos definen. Estamos contigo <span class="texto-destacado">antes y después</span> de adquirir tu solución, garantizando un respaldo total.
             </p>
-            <br>
-            <p>
-                Integramos inteligencia artificial en nuestros procesos para optimizar el diseño, mejorar el rendimiento y garantizar soluciones web más eficientes, escalables y preparadas para el futuro. Nuestro enfoque se basa en la simplicidad, la precisión y la evolución constante. Creamos tecnología que se mantiene, se adapta y perdura en el tiempo.
-            </p>
-            
-            <p style="font-weight: 800; font-size: 1.2rem; margin-top: 30px;">Q.</p>
-
-            <div class="founder-sign">
-                <div style="font-style: italic; margin-bottom: 5px;">— Santiago Andrés</div>
-                <div style="font-size: 0.9rem; color: #888;">CEO & Founder</div>
-                <div style="font-size: 0.8rem; color: #555; margin-top: 15px;">© 2025 · QAXI</div>
+            <div class="values-grid">
+                <span class="value-item"><i class="fas fa-heart"></i> Pasión</span>
+                <span class="value-item"><i class="fas fa-handshake"></i> Respeto</span>
+                <span class="value-item"><i class="fas fa-shield-alt"></i> Integridad</span>
+                <span class="value-item"><i class="fas fa-search"></i> Transparencia</span>
             </div>
         </div>
     </section>
 
-    <section id="faq">
-        <h2 class="section-title">Preguntas Frecuentes</h2>
-        <div style="max-width: 800px; margin: 0 auto;">
-            
-            <details>
-                <summary>¿Qué pasa si cancelo mi suscripción?</summary>
-                <div class="faq-answer">
-                    El servicio funciona como un alquiler. Si cancelas, la página web y el dominio se desactivan al finalizar el mes pagado. Puedes reactivarlos cuando quieras retomando el pago.
+    <section id="soluciones">
+        <h2 class="section-title">Cotiza tu Seguro</h2>
+        <p class="section-desc">Selecciona la solución que necesitas y recibe asesoría inmediata vía WhatsApp.</p>
+        
+        <div class="cotizador-wrapper">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('auto')"><i class="fas fa-car"></i> Autos</button>
+                <button class="tab-btn" onclick="openTab('salud')"><i class="fas fa-heartbeat"></i> Salud</button>
+                <button class="tab-btn" onclick="openTab('vida')"><i class="fas fa-user-shield"></i> Vida</button>
+                <button class="tab-btn" onclick="openTab('hogar')"><i class="fas fa-home"></i> Hogar</button>
+            </div>
+
+            <div id="auto" class="form-content active">
+                <div class="form-header">
+                    <h3>Seguro de Autos</h3>
+                    <p>Cobertura total: RCE, Pérdida Total/Parcial y Asistencia 24/7.</p>
                 </div>
-            </details>
+                <form>
+                    <div class="form-grid">
+                        <div><label>Nombre Completo</label><input type="text" id="auto-nombre" placeholder="Tu nombre"></div>
+                        <div><label>Cédula / NIT</label><input type="number" id="auto-cedula" placeholder="Sin puntos ni guiones"></div>
+                        <div><label>Placa</label><input type="text" id="auto-placa" style="text-transform:uppercase;" placeholder="Ej: ABC123"></div>
+                        <div><label>Modelo (Año)</label><input type="number" id="auto-modelo" placeholder="Ej: 2023"></div>
+                        <div class="full-width"><label>Referencia Completa</label><input type="text" id="auto-referencia" placeholder="Marca, Línea y Versión (Ej: Mazda CX-30 Touring)"></div>
+                    </div>
+                    <button type="button" class="cta-btn" onclick="enviarWhatsapp('auto')">
+                        <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i> Solicitar Cotización Auto
+                    </button>
+                </form>
+            </div>
 
-            <details>
-                <summary>¿El hosting está incluido?</summary>
-                <div class="faq-answer">
-                    Sí, absolutamente. El hosting privado de alta velocidad está incluido en el precio mensual de $16 USD. No tienes que preocuparte por servidores ni configuraciones técnicas extra.
+            <div id="salud" class="form-content">
+                <div class="form-header">
+                    <h3>Salud Global y Clásica</h3>
+                    <p>Acceso directo a especialistas y las mejores clínicas.</p>
                 </div>
-            </details>
+                <form>
+                    <div class="form-grid">
+                        <div><label>Nombre Titular</label><input type="text" id="salud-nombre"></div>
+                        <div><label>Edad</label><input type="number" id="salud-edad"></div>
+                        <div class="full-width">
+                            <label>Tipo de Plan de Interés</label>
+                            <select id="salud-tipo">
+                                <option>Salud Global (Cobertura Internacional)</option>
+                                <option>Salud Clásica (Premium Nacional)</option>
+                                <option>Quiero comparar ambos</option>
+                            </select>
+                        </div>
+                        <div class="full-width"><label>Preexistencias Médicas</label><input type="text" id="salud-pre" placeholder="Escribe 'Ninguna' o detalla brevemente"></div>
+                    </div>
+                    <button type="button" class="cta-btn" onclick="enviarWhatsapp('salud')">
+                        <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i> Solicitar Cotización Salud
+                    </button>
+                </form>
+            </div>
 
-            <details>
-                <summary>¿Puedo pedir cambios en la web?</summary>
-                <div class="faq-answer">
-                    El plan incluye mantenimiento técnico constante. Cambios de contenido menores (textos, una foto) están incluidos; si requieres un rediseño completo de la estructura, se cotiza por aparte.
+            <div id="vida" class="form-content">
+                <div class="form-header">
+                    <h3>Seguro de Vida</h3>
+                    <p>Garantiza el futuro financiero y bienestar de tu familia.</p>
                 </div>
-            </details>
+                <form>
+                    <div class="form-grid">
+                        <div><label>Nombre Completo</label><input type="text" id="vida-nombre"></div>
+                        <div><label>Fecha de Nacimiento</label><input type="date" id="vida-nacimiento"></div>
+                        <div><label>Ocupación Principal</label><input type="text" id="vida-ocupacion"></div>
+                        <div><label>Valor Asegurado Deseado (Aprox)</label><input type="number" id="vida-valor" placeholder="$"></div>
+                    </div>
+                    <button type="button" class="cta-btn" onclick="enviarWhatsapp('vida')">
+                        <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i> Solicitar Cotización Vida
+                    </button>
+                </form>
+            </div>
 
-             <details>
-                <summary>¿Cuánto tardan en entregar mi web?</summary>
-                <div class="faq-answer">
-                    Gracias a nuestra integración con IA y procesos optimizados, una vez tengamos tu información, tu web suele estar lista en un plazo de 3 a 5 días hábiles.
+            <div id="hogar" class="form-content">
+                <div class="form-header">
+                    <h3>Seguro de Hogar</h3>
+                    <p>Protege tu patrimonio (estructura y contenidos) contra todo riesgo.</p>
                 </div>
-            </details>
-
-        </div>
-    </section>
-
-    <section id="pricing">
-        <h2 class="section-title" style="text-align: center; border: none;">Planes y Precios</h2>
-        <div class="pricing-container">
-            <div class="pricing-card">
-                <h3>Plan Estándar Mensual</h3>
-                <div class="price">$16 USD<span>/Mes</span></div>
-                <p>Creación de tu página web con todo incluido.</p>
-                
-                <ul class="features-list">
-                    <li><i class="fas fa-check-circle"></i> 1 página web</li>
-                    <li><i class="fas fa-check-circle"></i> Dominio incluido</li>
-                    <li><i class="fas fa-check-circle"></i> Hosting privado</li>
-                    <li><i class="fas fa-check-circle"></i> Integración de IA</li>
-                    <li><i class="fas fa-check-circle"></i> Mantenimiento continuo</li>
-                    <li><i class="fas fa-check-circle"></i> Soporte vía email</li>
-                </ul>
-                <a href="mailto:santiagomarenco1005@icloud.com?subject=Quiero suscribirme al Plan Estándar QAXI" class="cta-btn" style="display: block; width: 100%;">Suscribirme</a>
+                <form>
+                    <div class="form-grid">
+                        <div><label>Nombre del Propietario</label><input type="text" id="hogar-nombre"></div>
+                        <div><label>Ciudad del Inmueble</label><input type="text" id="hogar-ciudad"></div>
+                        <div><label>Tipo de Inmueble</label>
+                            <select id="hogar-tipo">
+                                <option>Apartamento</option>
+                                <option>Casa</option>
+                                <option>Finca de Recreo</option>
+                            </select>
+                        </div>
+                        <div><label>Valor Estimado Contenidos</label><input type="number" id="hogar-contenidos" placeholder="Muebles, electrodomésticos, etc."></div>
+                    </div>
+                    <button type="button" class="cta-btn" onclick="enviarWhatsapp('hogar')">
+                        <i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i> Solicitar Cotización Hogar
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
-    <section id="legal">
-        <div class="legal-summary" onclick="toggleLegal()">
-            <h3>Términos y Condiciones — QAXI</h3>
-            <i class="fas fa-chevron-down" id="legal-icon"></i>
-        </div>
-        <div class="legal-content" id="legal-text">
-            <p><strong>Última actualización: 2025</strong></p>
-            
-            <h4>1. Descripción del servicio</h4>
-            <p>QAXI ofrece un servicio de creación, alojamiento, mantenimiento y soporte de páginas web bajo modalidad de suscripción mensual. El servicio incluye, según el plan contratado, desarrollo web, dominio, hosting, mantenimiento, soporte y uso de herramientas de inteligencia artificial. QAXI no vende páginas web como producto final, sino que presta un servicio continuo mientras la suscripción esté activa.</p>
-
-            <h4>2. Modalidad de suscripción</h4>
-            <p>El servicio funciona bajo pago mensual recurrente. La página web, el dominio y el hosting permanecen activos únicamente mientras el plan esté vigente y al día en los pagos. QAXI se reserva el derecho de modificar, suspender o cancelar el servicio en caso de incumplimiento de pago.</p>
-
-            <h4>3. Dominio y propiedad</h4>
-            <p>El dominio es adquirido y administrado por QAXI. El dominio se mantiene activo solo mientras el cliente tenga un plan vigente. En caso de cancelación o falta de pago, el dominio podrá ser desactivado o reutilizado por QAXI. El cliente no adquiere propiedad automática sobre el dominio, salvo acuerdo expreso por escrito.</p>
-
-            <h4>4. Hosting y contenido</h4>
-            <p>El hosting es gestionado por QAXI. El cliente acepta que la infraestructura, configuración y administración técnica pertenecen a QAXI durante la vigencia del servicio. El contenido del sitio puede ser eliminado en caso de cancelación del servicio o falta de pago.</p>
-
-            <h4>5. Mantenimiento</h4>
-            <p>El mantenimiento incluye:</p>
-            <ul>
-                <li>actualizaciones técnicas</li>
-                <li>ajustes básicos</li>
-                <li>monitoreo general</li>
-                <li>soporte técnico estándar</li>
-            </ul>
-            <p>No incluye rediseños completos, desarrollos a medida ni cambios ilimitados, salvo que el plan contratado lo especifique.</p>
-
-            <h4>6. Soporte</h4>
-            <p>El soporte se brinda vía chat web (o correo electrónico), en horarios definidos por QAXI. El tiempo de respuesta puede variar según el volumen de solicitudes y el plan contratado.</p>
-
-            <h4>7. Uso de Inteligencia Artificial</h4>
-            <p>QAXI utiliza herramientas de inteligencia artificial para generación de contenido, optimización y automatización de procesos. El cliente acepta que el contenido generado por IA puede requerir ajustes y no garantiza resultados comerciales específicos.</p>
-
-            <h4>8. Cancelación del servicio</h4>
-            <p>El cliente puede cancelar el servicio en cualquier momento. En caso de cancelación o falta de pago:</p>
-            <ul>
-                <li>el sitio web será suspendido</li>
-                <li>el dominio será desactivado</li>
-                <li>el contenido podrá ser eliminado</li>
-            </ul>
-            <p>No se realizan reembolsos por períodos ya pagados.</p>
-
-            <h4>9. Permanencia mínima</h4>
-            <p>Algunos planes pueden requerir una permanencia mínima (por ejemplo, 12 meses). Esta condición será informada claramente al momento de la contratación.</p>
-
-            <h4>10. Limitación de responsabilidad</h4>
-            <p>QAXI no garantiza resultados comerciales, posicionamiento en buscadores ni generación de ventas. El servicio se presta “tal cual”, enfocado en presencia digital y mantenimiento técnico.</p>
-
-            <h4>11. Modificaciones</h4>
-            <p>QAXI se reserva el derecho de modificar estos Términos y Condiciones en cualquier momento. Las modificaciones serán publicadas en el sitio web y entrarán en vigor desde su publicación.</p>
-
-            <h4>12. Aceptación</h4>
-            <p>Al contratar cualquiera de los servicios de QAXI, el cliente declara haber leído, comprendido y aceptado estos Términos y Condiciones.</p>
-
-            <br>
-            <div style="border-top: 1px solid #333; padding-top: 20px; color: #fff;">
-                <strong>QAXI</strong><br>
-                Desarrollo y mantenimiento web por suscripción<br>
-                Q.<br>
-                © 2025 · QAXI.
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2025 · QAXI. Todos los derechos reservados.</p>
-        <p>Q.</p>
-    </footer>
-
-    <a href="mailto:santiagomarenco1005@icloud.com" class="email-float-btn" title="Contactar Soporte">
-        <i class="fas fa-envelope"></i>
+    <a href="https://wa.me/573014633995" class="whatsapp-float" target="_blank" title="Chatear en WhatsApp">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
+    <footer id="contacto">
+        <h2 style="color:var(--primary); margin-bottom:25px; font-weight: 800;">Contáctanos</h2>
+        <p class="footer-info"><i class="fas fa-envelope" style="color: var(--secondary); margin-right: 8px;"></i> <strong>Email:</strong> santiago.marenco@asesorsura.com</p>
+        <p class="footer-info"><i class="fas fa-phone-alt" style="color: var(--secondary); margin-right: 8px;"></i> <strong>Móvil 1:</strong> +57 301 4633995</p>
+        <p class="footer-info"><i class="fas fa-phone-alt" style="color: var(--secondary); margin-right: 8px;"></i> <strong>Móvil 2:</strong> +57 318 3471986</p>
+        <br>
+        <p style="font-size: 0.95rem; opacity: 0.7;">&copy; 2025 SM SEGUROS. Todos los derechos reservados.</p>
+    </footer>
+
     <script>
-        // Toggle Legal
-        function toggleLegal() {
-            const content = document.getElementById('legal-text');
-            const icon = document.getElementById('legal-icon');
-            if (content.style.display === "block") {
-                content.style.display = "none";
-                icon.className = "fas fa-chevron-down";
-            } else {
-                content.style.display = "block";
-                icon.className = "fas fa-chevron-up";
+        function openTab(tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("form-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove('active');
             }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove('active');
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
         }
 
-        // Script de Animación Scroll Reveal (Para que aparezcan suavemente)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        });
-        
-        // Seleccionamos todas las secciones
-        const hiddenElements = document.querySelectorAll('section');
-        // Les agregamos la clase hidden inicialmente
-        hiddenElements.forEach((el) => el.classList.add('hidden'));
-        // Empezamos a observarlas
-        hiddenElements.forEach((el) => observer.observe(el));
+        function enviarWhatsapp(tipo) {
+            const tel = "573014633995";
+            let msg = "";
+            
+            if(tipo === 'auto') {
+                let n = document.getElementById('auto-nombre').value;
+                let p = document.getElementById('auto-placa').value;
+                let r = document.getElementById('auto-referencia').value;
+                msg = `Hola SM SEGUROS, deseo cotizar AUTO para: ${n}. Placa: ${p}. Referencia: ${r}`;
+            } else if (tipo === 'salud') {
+                let n = document.getElementById('salud-nombre').value;
+                let t = document.getElementById('salud-tipo').value;
+                msg = `Hola SM SEGUROS, deseo cotizar SALUD (${t}) para: ${n}`;
+            } else if (tipo === 'vida') {
+                let n = document.getElementById('vida-nombre').value;
+                let v = document.getElementById('vida-valor').value;
+                msg = `Hola SM SEGUROS, deseo cotizar VIDA para: ${n}. Valor aprox: ${v}`;
+            } else if (tipo === 'hogar') {
+                let n = document.getElementById('hogar-nombre').value;
+                let c = document.getElementById('hogar-ciudad').value;
+                msg = `Hola SM SEGUROS, deseo cotizar HOGAR en ${c}. Propietario: ${n}`;
+            }
+            
+            window.open(`https://wa.me/${tel}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
     </script>
 </body>
 </html>
