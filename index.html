@@ -10,6 +10,8 @@
     <meta name="apple-mobile-web-app-title" content="SM SEGUROS">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
+    <link rel="preload" as="image" href="nuevo-logo-sm.jpg">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -53,7 +55,9 @@
         }
 
         .brand-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img-full { height: 80px; width: auto; display: block; }
+        
+        /* Aseguramos que el logo tenga dimensiones base para evitar saltos */
+        .logo-img-full { height: 80px; width: auto; display: block; min-width: 80px; }
 
         .nav-menu { list-style: none; display: flex; gap: 30px; align-items: center; }
         .nav-menu a {
@@ -114,7 +118,7 @@
         /* COTIZADOR */
         .cotizador-wrapper { background: white; border-radius: 30px; box-shadow: var(--shadow-soft); overflow: hidden; border: 1px solid rgba(0,0,0,0.05); }
         
-        /* Indicador de Swipe (VISIBLE SIEMPRE, SIN EMOJI DE MANO) */
+        /* Indicador de Swipe (Solo texto y flechas) */
         .swipe-hint {
             display: block;
             background: #eefbff;
@@ -198,7 +202,7 @@
 
     <header>
         <a href="#" class="brand-container">
-            <img src="nuevo-logo-sm.jpg" alt="SM Seguros" class="logo-img-full">
+            <img src="nuevo-logo-sm.jpg" alt="SM Seguros" class="logo-img-full" fetchpriority="high">
         </a>
         <nav>
             <ul class="nav-menu">
